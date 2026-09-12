@@ -1,58 +1,61 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Palm City — Open World</title>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=dLZIb5QkK6Mvq-5sJxBCpQhiFHnK2fjDDjq_tDvyEcV4m5q44k8IRItqYXuZwOwpSrmKmQImoxpBPG6JL0q3H7L6rvO527QyBNRz41EJRGK2s_H0hkZGdKykP-FPntm1aJHqiUgLvV48YJ_MHCk-aPXUcvt_6jRbfzySr7YMaWBNW2qrtH7spu2kK4V6flE2hylXsn4Dtv9NzUcld9sTXD32Pvi7I8cVhccYglQMYzm0ICkLwOu15vOhp9rBcT6W1euhAE34z0HUv1OYku-5aeIIvIyH8SvoD67X030fwOBpO46nbNayugWULjb6sqbr" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGFkZjQ4MWZkYmYzNzk0MDIyNDRhOTA1YyZmbj1pbmRleC5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2OTk4JnA9ZnMmY2lkPTEmc2lnPWFhYzZmMmFlNGExYzg1OTg5YzViYWU1OWM3MWMwMjU3N2QwNTczOWUxYTQwYjBjYjE4ZTEwZmRkNTYwYWRhYjYmdj0w"/><style>
-html,body{margin:0;height:100%;overflow:hidden;background:#08111b;font-family:Arial,sans-serif;color:#fff}canvas{display:block}
-#hud{position:fixed;z-index:5;left:18px;top:18px;background:#07111bdd;border:1px solid #ffffff22;border-radius:14px;padding:14px 18px;min-width:190px;backdrop-filter:blur(8px)}
-#hud h2{margin:0 0 8px;font-size:18px;color:#ffcf5c}.row{margin:6px 0;font-weight:bold}
-#map{position:fixed;right:18px;bottom:18px;width:145px;height:145px;border-radius:50%;border:4px solid #fff8;background:#102030;z-index:5;overflow:hidden}
-#tip{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;background:#000a;padding:10px 18px;border-radius:20px;text-align:center;font-size:14px}
-#intro{position:fixed;inset:0;background:linear-gradient(#061526cc,#02070dcc);z-index:20;display:flex;align-items:center;justify-content:center;text-align:center}
-.panel{width:min(520px,90vw);padding:35px;border:1px solid #ffffff22;border-radius:26px;background:#091522ee;box-shadow:0 30px 100px #000}.panel h1{font-size:clamp(42px,8vw,70px);margin:0;color:#ffd15c}.panel p{line-height:1.6;color:#c7d5e0}button{background:#ffd15c;color:#17202a;border:0;border-radius:12px;padding:16px 30px;font-size:18px;font-weight:900;cursor:pointer}
+<title>Palm City Open World</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=96MyXJA98IZkNh-UN5xM7JnzESOmJY74ZU48Z4qz0imVo8onD91lIM25nFzgiqkWQU1W4JnPYtgRgMq_LjEH9tQ6hox4gLOq7Kuys5L821QC6MwynO80zFG9Bwva5UnryXZ2P_EAorKfVOwOa86CSim3rM10VsPifAkYg5SwQpTOmvbzLCc4ZUxXKoear6O7HzmrJOiJtVj1rA_cZ5WhyRQmwiR-IC1fstClO2PN6aqxM-q1rSkImKF59b0w2Si8e4NTssVubhCvKMCUWSUi8jE-VzIGX6oJKaMyljkDiDSb8lKSeEZAvnCqkMGtMgo5" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDY2M2M4MjMwODk1NzU0Nzk1NzAwNDEzOSZmbj1pbmRleC5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2OTk4JnA9ZnMmY2lkPTEmc2lnPWY5MzMyZjU0ZjUyYjViOWRhZjdjYjJkNDI5N2E3NTg0Yzg3ZDdiMWQyYzQ0Y2I0ZWMzNDlmMzA3MjNjNDBhZTQmdj0w"/><style>
+html,body{margin:0;height:100%;overflow:hidden;background:#55bde6;font-family:Arial;color:#fff}canvas{display:block}
+#hud{position:fixed;top:14px;left:14px;z-index:5;background:#07131bdd;border-radius:14px;padding:13px 17px;line-height:1.6}
+#hud b{color:#ffd54a;font-size:20px}#help{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);z-index:5;background:#000b;padding:10px 18px;border-radius:20px;text-align:center}
+#mini{position:fixed;right:18px;top:18px;width:150px;height:150px;border:3px solid white;border-radius:50%;background:#24613c;z-index:5}
+#start{position:fixed;inset:0;background:#07131be8;display:flex;align-items:center;justify-content:center;z-index:10;text-align:center}.card{padding:32px;background:#102b3f;border-radius:24px;max-width:480px;margin:20px}.card h1{font-size:50px;color:#ffd54a;margin:0}button{padding:15px 28px;border:0;border-radius:12px;background:#ffd54a;font-size:18px;font-weight:bold}
 </style></head><body>
-<canvas id="c"></canvas>
-<div id="hud"><h2>🌴 PALM CITY</h2><div class="row">💰 CASH: $<span id="cash">0</span></div><div class="row">🚗 STATUS: <span id="status">ON FOOT</span></div><div class="row">🌙 TIME: <span id="time">DAY</span></div></div>
-<canvas id="map"></canvas><div id="tip">WASD / Arrow Keys • Walk near a car to enter • E to exit</div>
-<div id="intro"><div class="panel"><h1>PALM CITY</h1><p>An original tropical open-world driving game.<br>Explore the city, collect cash and drive around the streets.</p><button onclick="start()">ENTER CITY 🌴</button></div></div>
+<canvas id="game"></canvas><canvas id="mini"></canvas>
+<div id="hud"><b>🌴 PALM CITY</b><br>💰 CASH: $<span id="cash">0</span><br>🚗 MODE: <span id="mode">WALKING</span><br>📍 MAP: OPEN WORLD</div>
+<div id="help">WASD / Arrow Keys: Move • Go near a car + press E to enter • E again to exit</div>
+<div id="start"><div class="card"><h1>🌴 PALM CITY</h1><p>Explore a huge city. Walk around and drive cars!</p><button onclick="startGame()">ENTER CITY 🚗</button></div></div>
 <script>
-const c=document.getElementById('c'),g=c.getContext('2d'),m=document.getElementById('map'),mg=m.getContext('2d');
-let W,H,keys={},running=false,cam={x:0,y:0},cash=0,night=0;
-const world={w:3000,h:2200};
-const p={x:1500,y:1250,r:13,car:null};
-let cars=[
-{x:1250,y:1250,a:0,col:'#d92d3a',speed:0},{x:1720,y:930,a:1.57,col:'#1976d2',speed:0},
-{x:760,y:1650,a:0,col:'#f0a020',speed:0},{x:2300,y:1420,a:3.14,col:'#e8e8e8',speed:0}
+const c=document.getElementById('game'),ctx=c.getContext('2d'),mini=document.getElementById('mini'),mx=mini.getContext('2d');
+let W,H;function resize(){W=c.width=innerWidth;H=c.height=innerHeight}addEventListener('resize',resize);resize();
+const WORLD={w:6000,h:4500};let running=false,cash=0,keys={},cam={x:0,y:0};
+const player={x:3000,y:2250,r:14,car:null};
+const cars=[
+{x:2850,y:2250,color:'#e63946',a:0,s:0},{x:3400,y:1800,color:'#1976d2',a:0,s:0},
+{x:1700,y:3000,color:'#ff9800',a:0,s:0},{x:4400,y:2800,color:'#eeeeee',a:0,s:0},
+{x:900,y:1000,color:'#8e44ad',a:0,s:0},{x:5200,y:3800,color:'#16a085',a:0,s:0}
 ];
-let traffic=[];for(let i=0;i<12;i++)traffic.push({x:300+i*210,y:i%2?650:1550,a:i%2?0:Math.PI,s:i%2?1.4:1.8,col:['#2b8cff','#f34b5b','#e9edf0','#ffb32b'][i%4]});
-let money=[];for(let i=0;i<35;i++)money.push({x:150+Math.random()*2700,y:150+Math.random()*1900});
-const buildings=[];for(let i=0;i<55;i++)buildings.push({x:80+Math.random()*2800,y:80+Math.random()*2000,w:80+Math.random()*150,h:70+Math.random()*150});
-addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='e')toggleCar()});addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
-function start(){running=true;document.getElementById('intro').style.display='none'}
-function toggleCar(){if(!running)return;if(p.car){p.x=p.car.x+45;p.y=p.car.y;p.car=null;document.getElementById('status').textContent='ON FOOT';return}
-let near=cars.find(q=>Math.hypot(q.x-p.x,q.y-p.y)<65);if(near){p.car=near;document.getElementById('status').textContent='DRIVING'}}
-function control(){
-let L=keys.a||keys.arrowleft,R=keys.d||keys.arrowright,U=keys.w||keys.arrowup,D=keys.s||keys.arrowdown;
-if(p.car){let q=p.car;if(L)q.a-=.055;if(R)q.a+=.055;if(U)q.speed=Math.min(q.speed+.22,8);else if(D)q.speed=Math.max(q.speed-.32,-3);else q.speed*=.96;q.x+=Math.cos(q.a)*q.speed;q.y+=Math.sin(q.a)*q.speed;p.x=q.x;p.y=q.y}
-else{let dx=(R?1:0)-(L?1:0),dy=(D?1:0)-(U?1:0);if(dx||dy){let z=Math.hypot(dx,dy);p.x+=dx/z*4;p.y+=dy/z*4}}
-p.x=Math.max(20,Math.min(world.w-20,p.x));p.y=Math.max(20,Math.min(world.h-20,p.y));
-traffic.forEach(t=>{t.x+=Math.cos(t.a)*t.s;t.y+=Math.sin(t.a)*t.s;if(t.x<100||t.x>world.w-100)t.a=Math.PI-t.a;if(t.y<100||t.y>world.h-100)t.a=-t.a});
-money=money.filter(q=>{if(Math.hypot(q.x-p.x,q.y-p.y)<28){cash+=100;document.getElementById('cash').textContent=cash;return false}return true});
-cam.x=p.x-W/2;cam.y=p.y-H/2;cam.x=Math.max(0,Math.min(world.w-W,cam.x));cam.y=Math.max(0,Math.min(world.h-H,cam.y));
+const coins=[];for(let i=0;i<90;i++)coins.push({x:100+Math.random()*(WORLD.w-200),y:100+Math.random()*(WORLD.h-200)});
+const buildings=[];for(let i=0;i<120;i++)buildings.push({x:Math.random()*WORLD.w,y:Math.random()*WORLD.h,w:100+Math.random()*180,h:90+Math.random()*170});
+const palms=[];for(let i=0;i<250;i++)palms.push({x:Math.random()*WORLD.w,y:Math.random()*WORLD.h});
+
+addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='e')toggleCar()});
+addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+function startGame(){running=true;document.getElementById('start').style.display='none'}
+function toggleCar(){
+if(!running)return;
+if(player.car){player.x=player.car.x+60;player.y=player.car.y;player.car=null;document.getElementById('mode').textContent='WALKING';return}
+let near=cars.find(q=>Math.hypot(player.x-q.x,player.y-q.y)<70);
+if(near){player.car=near;document.getElementById('mode').textContent='DRIVING'}}
+function update(){
+if(!running)return;let L=keys.a||keys.arrowleft,R=keys.d||keys.arrowright,U=keys.w||keys.arrowup,D=keys.s||keys.arrowdown;
+if(player.car){let q=player.car;if(L)q.a-=.06;if(R)q.a+=.06;if(U)q.s=Math.min(q.s+.28,10);else if(D)q.s=Math.max(q.s-.4,-4);else q.s*=.96;q.x+=Math.cos(q.a)*q.s;q.y+=Math.sin(q.a)*q.s;player.x=q.x;player.y=q.y}
+else{let dx=(R?1:0)-(L?1:0),dy=(D?1:0)-(U?1:0);if(dx||dy){let z=Math.hypot(dx,dy);player.x+=dx/z*5;player.y+=dy/z*5}}
+player.x=Math.max(20,Math.min(WORLD.w-20,player.x));player.y=Math.max(20,Math.min(WORLD.h-20,player.y));
+for(let i=coins.length-1;i>=0;i--)if(Math.hypot(player.x-coins[i].x,player.y-coins[i].y)<30){coins.splice(i,1);cash+=100;document.getElementById('cash').textContent=cash}
+cam.x=player.x-W/2;cam.y=player.y-H/2;cam.x=Math.max(0,Math.min(WORLD.w-W,cam.x));cam.y=Math.max(0,Math.min(WORLD.h-H,cam.y));
 }
-function road(x,y,w,h){g.fillStyle='#262b31';g.fillRect(x-cam.x,y-cam.y,w,h);g.strokeStyle='#e8d36a';g.lineWidth=3;g.setLineDash([18,18]);g.beginPath();if(w>h){g.moveTo(x-cam.x,y+h/2-cam.y);g.lineTo(x+w-cam.x,y+h/2-cam.y)}else{g.moveTo(x+w/2-cam.x,y-cam.y);g.lineTo(x+w/2-cam.x,y+h-cam.y)}g.stroke();g.setLineDash([])}
-function drawCar(q){let X=q.x-cam.x,Y=q.y-cam.y;g.save();g.translate(X,Y);g.rotate(q.a);g.fillStyle='rgba(0,0,0,.3)';g.fillRect(-24,-10,52,30);g.fillStyle=q.col;g.beginPath();g.roundRect(-30,-17,60,34,8);g.fill();g.fillStyle='#9fd5f2';g.fillRect(-8,-13,20,26);g.fillStyle='#111';g.fillRect(-26,-21,12,5);g.fillRect(14,-21,12,5);g.fillRect(-26,16,12,5);g.fillRect(14,16,12,5);g.restore()}
-function palm(X,Y){X-=cam.x;Y-=cam.y;g.fillStyle='#7a4a25';g.fillRect(X-5,Y-5,10,42);g.fillStyle='#2c8d4e';for(let a=0;a<6;a++){g.save();g.translate(X,Y);g.rotate(a*Math.PI/3);g.fillRect(0,-5,42,10);g.restore()}}
+function visible(X,Y,pad=100){return X>-pad&&Y>-pad&&X<W+pad&&Y<H+pad}
+function road(x,y,w,h){let X=x-cam.x,Y=y-cam.y;ctx.fillStyle='#4d5359';ctx.fillRect(X,Y,w,h);ctx.strokeStyle='#f2d36b';ctx.lineWidth=4;ctx.setLineDash([22,18]);ctx.beginPath();if(w>h){ctx.moveTo(X,Y+h/2);ctx.lineTo(X+w,Y+h/2)}else{ctx.moveTo(X+w/2,Y);ctx.lineTo(X+w/2,Y+h)}ctx.stroke();ctx.setLineDash([])}
+function building(b){let X=b.x-cam.x,Y=b.y-cam.y;if(!visible(X,Y,200))return;ctx.fillStyle='#d6cec0';ctx.fillRect(X,Y,b.w,b.h);ctx.fillStyle='#72b5d4';for(let y=Y+12;y<Y+b.h-10;y+=25)for(let x=X+12;x<X+b.w-10;x+=26)ctx.fillRect(x,y,10,12)}
+function palm(p){let X=p.x-cam.x,Y=p.y-cam.y;if(!visible(X,Y,80))return;ctx.fillStyle='#704321';ctx.fillRect(X-5,Y,10,42);ctx.fillStyle='#278a4b';for(let i=0;i<6;i++){ctx.save();ctx.translate(X,Y);ctx.rotate(i*Math.PI/3);ctx.fillRect(0,-5,42,10);ctx.restore()}}
+function drawCar(q){let X=q.x-cam.x,Y=q.y-cam.y;if(!visible(X,Y))return;ctx.save();ctx.translate(X,Y);ctx.rotate(q.a);ctx.fillStyle='rgba(0,0,0,.3)';ctx.fillRect(-30,-12,65,35);ctx.fillStyle=q.color;ctx.beginPath();ctx.roundRect(-32,-18,64,36,8);ctx.fill();ctx.fillStyle='#bde9ff';ctx.fillRect(-10,-13,20,26);ctx.fillStyle='#111';ctx.fillRect(-25,-22,12,5);ctx.fillRect(13,-22,12,5);ctx.fillRect(-25,17,12,5);ctx.fillRect(13,17,12,5);ctx.restore()}
 function draw(){
-let sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,night?'#071329':'#58bce8');sky.addColorStop(1,night?'#1d3448':'#c8e9f5');g.fillStyle=sky;g.fillRect(0,0,W,H);
-g.fillStyle=night?'#235e36':'#55a64d';g.fillRect(0,H*.25,W,H);
-road(0,500,world.w,140);road(0,1300,world.w,150);road(700,0,150,world.h);road(1700,0,160,world.h);road(2500,0,150,world.h);
-buildings.forEach(b=>{let X=b.x-cam.x,Y=b.y-cam.y;if(X<-200||Y<-200||X>W+200||Y>H+200)return;g.fillStyle=night?'#263747':'#d6c7b1';g.fillRect(X,Y,b.w,b.h);g.fillStyle=night?'#ffd76a':'#79b5d8';for(let yy=Y+15;yy<Y+b.h-10;yy+=24)for(let xx=X+12;xx<X+b.w-8;xx+=24){g.fillRect(xx,yy,9,11)}})
-for(let i=0;i<50;i++)palm((i*173)%world.w,(i*379)%world.h);
-money.forEach(q=>{let X=q.x-cam.x,Y=q.y-cam.y;g.fillStyle='#ffd34e';g.beginPath();g.arc(X,Y,8,0,7);g.fill()});
-traffic.forEach(drawCar);cars.forEach(drawCar);
-if(!p.car){let X=p.x-cam.x,Y=p.y-cam.y;g.fillStyle='#111';g.fillRect(X-8,Y-2,16,23);g.fillStyle='#e5a47d';g.beginPath();g.arc(X,Y-11,10,0,7);g.fill()}
-g.fillStyle='rgba(0,0,0,.25)';g.fillRect(0,0,W,H);if(!night){g.fillStyle='rgba(255,205,90,.12)';g.fillRect(0,0,W,H)}
+ctx.fillStyle='#66c9ed';ctx.fillRect(0,0,W,H);ctx.fillStyle='#54a84e';ctx.fillRect(0,0,W,H);
+for(let y=400;y<WORLD.h;y+=850)road(0,y,WORLD.w,150);
+for(let x=500;x<WORLD.w;x+=900)road(x,0,160,WORLD.h);
+buildings.forEach(building);palms.forEach(palm);
+coins.forEach(q=>{let X=q.x-cam.x,Y=q.y-cam.y;if(visible(X,Y)){ctx.fillStyle='#ffd43b';ctx.beginPath();ctx.arc(X,Y,9,0,Math.PI*2);ctx.fill()}});
+cars.forEach(drawCar);
+if(!player.car){let X=player.x-cam.x,Y=player.y-cam.y;ctx.fillStyle='#26313b';ctx.fillRect(X-8,Y-3,16,25);ctx.fillStyle='#efb18b';ctx.beginPath();ctx.arc(X,Y-13,10,0,Math.PI*2);ctx.fill()}
 }
-function minimap(){m.width=m.clientWidth;m.height=m.clientHeight;let s=m.width/world.w;mg.clearRect(0,0,m.width,m.height);mg.fillStyle='#246b3d';mg.fillRect(0,0,m.width,m.height);mg.fillStyle='#4d5155';mg.fillRect(0,500*s,m.width,140*s);mg.fillRect(0,1300*s,m.width,150*s);mg.fillRect(700*s,0,150*s,m.height);mg.fillRect(1700*s,0,160*s,m.height);mg.fillStyle='#fff';mg.beginPath();mg.arc(p.x*s,p.y*s,4,0,7);mg.fill()}
-function loop(){requestAnimationFrame(loop);if(running)control();draw();minimap();night=(night+.0004)%2;document.getElementById('time').textContent=night>1?'NIGHT 🌙':'DAY ☀️'}loop();
+function drawMini(){mini.width=mini.clientWidth;mini.height=mini.clientHeight;let s=mini.width/WORLD.w;mx.fillStyle='#39894b';mx.fillRect(0,0,mini.width,mini.height);mx.fillStyle='#555';for(let y=400;y<WORLD.h;y+=850)mx.fillRect(0,y*s,mini.width,150*s);for(let x=500;x<WORLD.w;x+=900)mx.fillRect(x*s,0,160*s,mini.height);mx.fillStyle='#fff';mx.beginPath();mx.arc(player.x*s,player.y*s,4,0,Math.PI*2);mx.fill()}
+function loop(){update();draw();drawMini();requestAnimationFrame(loop)}loop();
 </script></body></html>
