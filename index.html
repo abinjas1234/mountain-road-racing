@@ -1,43 +1,58 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Penalty Arena</title>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=TGiViQlKLXn-5R6hMbXLcRAKmydQId6Afh6wQJ5_67TyeOy8R-QqLg7houlwErOfLHgwCnE4qoivSK-_237i-fsf5aQT3AdZyUlUrkyO8sStbl8g6_XKHMcnMZDHHFSZGP9W6RJDuoZjUh1q2Q2Fq6ihAnZwXSsCbkYw1_dCK36HY2Sk-cg6k8pVz7zLELUKCsaarvBZTegJPBBQ3NOG5wilxD7xs1PmmB0DggywCMgB6grK-HB0_ZCbA4ofS6flknho2uvNKV-7VpblarimjpL3W_cKz3roqtA36wzndBnhs8ksJL2O7QeIagYTpA3d" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDkyODA4MWY3OGVlYTE5ZTEyNTVlYzU1ZSZmbj1pbmRleC5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2OTk4JnA9ZnMmY2lkPTEmc2lnPTY0NDg2MTZhNjVmZWZmZjRjMWU0YmE2MTI5ZDgyZGM3ZDM4ZmQ0ZjNiZGY3NjRkMDA4MmMzNGZlMjE1N2IxNjgmdj0w"/><style>
-*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#050b12;font-family:Arial;color:white}canvas{display:block;width:100vw;height:100vh}
-#top{position:fixed;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:5}.box{background:rgba(4,12,22,.78);border:1px solid rgba(255,255,255,.2);padding:9px 18px;border-radius:10px;text-align:center;min-width:95px}.box small{display:block;color:#9fb0bf}.box b{font-size:22px}
-#brand{position:fixed;left:20px;top:20px;font-weight:900;font-size:22px;z-index:5;text-shadow:0 2px 8px #000}#tip{position:fixed;bottom:18px;width:100%;text-align:center;font-weight:bold;text-shadow:0 2px 6px #000;z-index:5}
-#message{position:fixed;left:50%;top:55%;transform:translate(-50%,-50%);font-size:clamp(32px,7vw,72px);font-weight:900;text-shadow:0 5px 15px #000;z-index:6}
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:10}.panel{background:linear-gradient(145deg,#0b1c2c,#05090f);border:1px solid #ffffff33;border-radius:22px;padding:32px;text-align:center;width:min(90vw,480px);box-shadow:0 25px 70px #000}.panel h1{font-size:44px;margin:0 0 10px}.panel p{line-height:1.5;color:#c8d3dc}button{background:#f2c94c;border:0;padding:15px 28px;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palm City — Open World</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=dLZIb5QkK6Mvq-5sJxBCpQhiFHnK2fjDDjq_tDvyEcV4m5q44k8IRItqYXuZwOwpSrmKmQImoxpBPG6JL0q3H7L6rvO527QyBNRz41EJRGK2s_H0hkZGdKykP-FPntm1aJHqiUgLvV48YJ_MHCk-aPXUcvt_6jRbfzySr7YMaWBNW2qrtH7spu2kK4V6flE2hylXsn4Dtv9NzUcld9sTXD32Pvi7I8cVhccYglQMYzm0ICkLwOu15vOhp9rBcT6W1euhAE34z0HUv1OYku-5aeIIvIyH8SvoD67X030fwOBpO46nbNayugWULjb6sqbr" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGFkZjQ4MWZkYmYzNzk0MDIyNDRhOTA1YyZmbj1pbmRleC5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2OTk4JnA9ZnMmY2lkPTEmc2lnPWFhYzZmMmFlNGExYzg1OTg5YzViYWU1OWM3MWMwMjU3N2QwNTczOWUxYTQwYjBjYjE4ZTEwZmRkNTYwYWRhYjYmdj0w"/><style>
+html,body{margin:0;height:100%;overflow:hidden;background:#08111b;font-family:Arial,sans-serif;color:#fff}canvas{display:block}
+#hud{position:fixed;z-index:5;left:18px;top:18px;background:#07111bdd;border:1px solid #ffffff22;border-radius:14px;padding:14px 18px;min-width:190px;backdrop-filter:blur(8px)}
+#hud h2{margin:0 0 8px;font-size:18px;color:#ffcf5c}.row{margin:6px 0;font-weight:bold}
+#map{position:fixed;right:18px;bottom:18px;width:145px;height:145px;border-radius:50%;border:4px solid #fff8;background:#102030;z-index:5;overflow:hidden}
+#tip{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;background:#000a;padding:10px 18px;border-radius:20px;text-align:center;font-size:14px}
+#intro{position:fixed;inset:0;background:linear-gradient(#061526cc,#02070dcc);z-index:20;display:flex;align-items:center;justify-content:center;text-align:center}
+.panel{width:min(520px,90vw);padding:35px;border:1px solid #ffffff22;border-radius:26px;background:#091522ee;box-shadow:0 30px 100px #000}.panel h1{font-size:clamp(42px,8vw,70px);margin:0;color:#ffd15c}.panel p{line-height:1.6;color:#c7d5e0}button{background:#ffd15c;color:#17202a;border:0;border-radius:12px;padding:16px 30px;font-size:18px;font-weight:900;cursor:pointer}
 </style></head><body>
-<canvas id="c"></canvas><div id="brand">⚽ PENALTY ARENA</div>
-<div id="top"><div class="box"><small>GOALS</small><b id="g">0</b></div><div class="box"><small>SHOTS</small><b id="s">0 / 5</b></div><div class="box"><small>BEST</small><b id="b">0</b></div></div>
-<div id="message"></div><div id="tip">🎯 TAP / CLICK INSIDE THE GOAL TO AIM YOUR PENALTY</div>
-<div id="overlay"><div class="panel" id="panel"><h1>⚽ PENALTY ARENA</h1><p>A realistic-style stadium penalty challenge.<br><b>Aim for the corners and beat the goalkeeper!</b></p><button onclick="begin()">KICK OFF 🔥</button></div></div>
+<canvas id="c"></canvas>
+<div id="hud"><h2>🌴 PALM CITY</h2><div class="row">💰 CASH: $<span id="cash">0</span></div><div class="row">🚗 STATUS: <span id="status">ON FOOT</span></div><div class="row">🌙 TIME: <span id="time">DAY</span></div></div>
+<canvas id="map"></canvas><div id="tip">WASD / Arrow Keys • Walk near a car to enter • E to exit</div>
+<div id="intro"><div class="panel"><h1>PALM CITY</h1><p>An original tropical open-world driving game.<br>Explore the city, collect cash and drive around the streets.</p><button onclick="start()">ENTER CITY 🌴</button></div></div>
 <script>
-const c=document.getElementById('c'),x=c.getContext('2d');let W,H,goals=0,shots=0,best=+localStorage.realPenaltyBest||0,play=false,ball=null,kx=0,kv=2,msg='',mt=0;document.getElementById('b').textContent=best;
-function rs(){W=c.width=innerWidth;H=c.height=innerHeight}addEventListener('resize',rs);rs();
-function goal(){let w=Math.min(W*.78,850),h=H*.42;return{x:(W-w)/2,y:H*.16,w,h}}
-function begin(){goals=shots=0;ball=null;play=true;document.getElementById('g').textContent=0;document.getElementById('s').textContent='0 / 5';document.getElementById('overlay').style.display='none';}
-function stadium(){
-let sky=x.createLinearGradient(0,0,0,H*.52);sky.addColorStop(0,'#07172b');sky.addColorStop(1,'#3b6684');x.fillStyle=sky;x.fillRect(0,0,W,H*.55);
-for(let row=0;row<7;row++){x.fillStyle=`rgba(${30+row*5},${35+row*7},${45+row*8},1)`;x.fillRect(0,H*.03+row*H*.055,W,H*.06)}
-for(let i=0;i<180;i++){let px=(i*73)%W,py=H*.05+(i*47)%(H*.34);x.fillStyle=i%3?'#d9d9d9':'#f2c94c';x.fillRect(px,py,2,2)}
-x.fillStyle='#1e8f42';x.fillRect(0,H*.45,W,H*.55);for(let i=0;i<12;i++){x.fillStyle=i%2?'rgba(255,255,255,.035)':'rgba(0,0,0,.025)';x.fillRect(i*W/12,H*.45,W/12,H)}
+const c=document.getElementById('c'),g=c.getContext('2d'),m=document.getElementById('map'),mg=m.getContext('2d');
+let W,H,keys={},running=false,cam={x:0,y:0},cash=0,night=0;
+const world={w:3000,h:2200};
+const p={x:1500,y:1250,r:13,car:null};
+let cars=[
+{x:1250,y:1250,a:0,col:'#d92d3a',speed:0},{x:1720,y:930,a:1.57,col:'#1976d2',speed:0},
+{x:760,y:1650,a:0,col:'#f0a020',speed:0},{x:2300,y:1420,a:3.14,col:'#e8e8e8',speed:0}
+];
+let traffic=[];for(let i=0;i<12;i++)traffic.push({x:300+i*210,y:i%2?650:1550,a:i%2?0:Math.PI,s:i%2?1.4:1.8,col:['#2b8cff','#f34b5b','#e9edf0','#ffb32b'][i%4]});
+let money=[];for(let i=0;i<35;i++)money.push({x:150+Math.random()*2700,y:150+Math.random()*1900});
+const buildings=[];for(let i=0;i<55;i++)buildings.push({x:80+Math.random()*2800,y:80+Math.random()*2000,w:80+Math.random()*150,h:70+Math.random()*150});
+addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='e')toggleCar()});addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+function start(){running=true;document.getElementById('intro').style.display='none'}
+function toggleCar(){if(!running)return;if(p.car){p.x=p.car.x+45;p.y=p.car.y;p.car=null;document.getElementById('status').textContent='ON FOOT';return}
+let near=cars.find(q=>Math.hypot(q.x-p.x,q.y-p.y)<65);if(near){p.car=near;document.getElementById('status').textContent='DRIVING'}}
+function control(){
+let L=keys.a||keys.arrowleft,R=keys.d||keys.arrowright,U=keys.w||keys.arrowup,D=keys.s||keys.arrowdown;
+if(p.car){let q=p.car;if(L)q.a-=.055;if(R)q.a+=.055;if(U)q.speed=Math.min(q.speed+.22,8);else if(D)q.speed=Math.max(q.speed-.32,-3);else q.speed*=.96;q.x+=Math.cos(q.a)*q.speed;q.y+=Math.sin(q.a)*q.speed;p.x=q.x;p.y=q.y}
+else{let dx=(R?1:0)-(L?1:0),dy=(D?1:0)-(U?1:0);if(dx||dy){let z=Math.hypot(dx,dy);p.x+=dx/z*4;p.y+=dy/z*4}}
+p.x=Math.max(20,Math.min(world.w-20,p.x));p.y=Math.max(20,Math.min(world.h-20,p.y));
+traffic.forEach(t=>{t.x+=Math.cos(t.a)*t.s;t.y+=Math.sin(t.a)*t.s;if(t.x<100||t.x>world.w-100)t.a=Math.PI-t.a;if(t.y<100||t.y>world.h-100)t.a=-t.a});
+money=money.filter(q=>{if(Math.hypot(q.x-p.x,q.y-p.y)<28){cash+=100;document.getElementById('cash').textContent=cash;return false}return true});
+cam.x=p.x-W/2;cam.y=p.y-H/2;cam.x=Math.max(0,Math.min(world.w-W,cam.x));cam.y=Math.max(0,Math.min(world.h-H,cam.y));
 }
-function drawGoal(){
-let g=goal();x.fillStyle='rgba(220,235,245,.16)';x.fillRect(g.x,g.y,g.w,g.h);
-x.strokeStyle='rgba(255,255,255,.28)';x.lineWidth=1;
-for(let i=0;i<18;i++){let xx=g.x+i*g.w/17;x.beginPath();x.moveTo(xx,g.y);x.lineTo(xx,g.y+g.h);x.stroke()}
-for(let i=0;i<9;i++){let yy=g.y+i*g.h/8;x.beginPath();x.moveTo(g.x,yy);x.lineTo(g.x+g.w,yy);x.stroke()}
-x.strokeStyle='#fff';x.lineWidth=Math.max(5,W*.006);x.strokeRect(g.x,g.y,g.w,g.h);
+function road(x,y,w,h){g.fillStyle='#262b31';g.fillRect(x-cam.x,y-cam.y,w,h);g.strokeStyle='#e8d36a';g.lineWidth=3;g.setLineDash([18,18]);g.beginPath();if(w>h){g.moveTo(x-cam.x,y+h/2-cam.y);g.lineTo(x+w-cam.x,y+h/2-cam.y)}else{g.moveTo(x+w/2-cam.x,y-cam.y);g.lineTo(x+w/2-cam.x,y+h-cam.y)}g.stroke();g.setLineDash([])}
+function drawCar(q){let X=q.x-cam.x,Y=q.y-cam.y;g.save();g.translate(X,Y);g.rotate(q.a);g.fillStyle='rgba(0,0,0,.3)';g.fillRect(-24,-10,52,30);g.fillStyle=q.col;g.beginPath();g.roundRect(-30,-17,60,34,8);g.fill();g.fillStyle='#9fd5f2';g.fillRect(-8,-13,20,26);g.fillStyle='#111';g.fillRect(-26,-21,12,5);g.fillRect(14,-21,12,5);g.fillRect(-26,16,12,5);g.fillRect(14,16,12,5);g.restore()}
+function palm(X,Y){X-=cam.x;Y-=cam.y;g.fillStyle='#7a4a25';g.fillRect(X-5,Y-5,10,42);g.fillStyle='#2c8d4e';for(let a=0;a<6;a++){g.save();g.translate(X,Y);g.rotate(a*Math.PI/3);g.fillRect(0,-5,42,10);g.restore()}}
+function draw(){
+let sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,night?'#071329':'#58bce8');sky.addColorStop(1,night?'#1d3448':'#c8e9f5');g.fillStyle=sky;g.fillRect(0,0,W,H);
+g.fillStyle=night?'#235e36':'#55a64d';g.fillRect(0,H*.25,W,H);
+road(0,500,world.w,140);road(0,1300,world.w,150);road(700,0,150,world.h);road(1700,0,160,world.h);road(2500,0,150,world.h);
+buildings.forEach(b=>{let X=b.x-cam.x,Y=b.y-cam.y;if(X<-200||Y<-200||X>W+200||Y>H+200)return;g.fillStyle=night?'#263747':'#d6c7b1';g.fillRect(X,Y,b.w,b.h);g.fillStyle=night?'#ffd76a':'#79b5d8';for(let yy=Y+15;yy<Y+b.h-10;yy+=24)for(let xx=X+12;xx<X+b.w-8;xx+=24){g.fillRect(xx,yy,9,11)}})
+for(let i=0;i<50;i++)palm((i*173)%world.w,(i*379)%world.h);
+money.forEach(q=>{let X=q.x-cam.x,Y=q.y-cam.y;g.fillStyle='#ffd34e';g.beginPath();g.arc(X,Y,8,0,7);g.fill()});
+traffic.forEach(drawCar);cars.forEach(drawCar);
+if(!p.car){let X=p.x-cam.x,Y=p.y-cam.y;g.fillStyle='#111';g.fillRect(X-8,Y-2,16,23);g.fillStyle='#e5a47d';g.beginPath();g.arc(X,Y-11,10,0,7);g.fill()}
+g.fillStyle='rgba(0,0,0,.25)';g.fillRect(0,0,W,H);if(!night){g.fillStyle='rgba(255,205,90,.12)';g.fillRect(0,0,W,H)}
 }
-function keeper(){
-let g=goal();kx+=kv;if(kx>g.w*.3||kx<-g.w*.3)kv*=-1;let X=W/2+kx,Y=g.y+g.h*.57;
-x.save();x.translate(X,Y);x.fillStyle='#143d8c';x.fillRect(-24,-34,48,50);x.fillStyle='#f0b58d';x.beginPath();x.arc(0,-49,15,0,7);x.fill();x.strokeStyle='#143d8c';x.lineWidth=12;x.beginPath();x.moveTo(-22,-25);x.lineTo(-58,-5);x.moveTo(22,-25);x.lineTo(58,-5);x.stroke();x.strokeStyle='#111';x.lineWidth=14;x.beginPath();x.moveTo(-13,14);x.lineTo(-18,56);x.moveTo(13,14);x.lineTo(18,56);x.stroke();x.restore();return{X,Y}
-}
-function drawBall(){
-if(!ball)return;ball.p+=.035;let p=Math.min(ball.p,1),e=1-Math.pow(1-p,3);ball.X=W/2+(ball.tx-W/2)*e;ball.Y=H*.83+(ball.ty-H*.83)*e;ball.r=32*(1-.6*e);
-x.beginPath();x.arc(ball.X,ball.Y,ball.r,0,7);x.fillStyle='#fff';x.fill();x.strokeStyle='#bbb';x.lineWidth=2;x.stroke();x.fillStyle='#202020';x.beginPath();x.arc(ball.X,ball.Y,ball.r*.3,0,7);x.fill();
-if(p>=1){let g=goal(),save=Math.abs(ball.tx-(W/2+kx))<65&&ball.ty>g.y+g.h*.25&&ball.ty<g.y+g.h*.82;if(save){msg='SAVED! 🧤'}else{goals++;document.getElementById('g').textContent=goals;msg='GOOOAL! ⚽🔥'}mt=70;ball=null;if(shots>=5)setTimeout(end,800)}
-}
-function end(){play=false;if(goals>best){best=goals;localStorage.realPenaltyBest=best}document.getElementById('b').textContent=best;document.getElementById('overlay').style.display='flex';document.getElementById('panel').innerHTML=`<h1>🏆 FINAL SCORE</h1><p>You scored <b>${goals} / 5</b> penalties!</p><button onclick="begin()">PLAY AGAIN 🔥</button>`}
-function loop(){requestAnimationFrame(loop);stadium();drawGoal();keeper();drawBall();if(mt>0){mt--;document.getElementById('message').textContent=msg}else document.getElementById('message').textContent=''}loop();
-c.addEventListener('pointerdown',e=>{if(!play||ball)return;let g=goal(),X=e.clientX,Y=e.clientY;if(X>=g.x&&X<=g.x+g.w&&Y>=g.y&&Y<=g.y+g.h){shots++;document.getElementById('s').textContent=shots+' / 5';ball={tx:X,ty:Y,p:0}}});
+function minimap(){m.width=m.clientWidth;m.height=m.clientHeight;let s=m.width/world.w;mg.clearRect(0,0,m.width,m.height);mg.fillStyle='#246b3d';mg.fillRect(0,0,m.width,m.height);mg.fillStyle='#4d5155';mg.fillRect(0,500*s,m.width,140*s);mg.fillRect(0,1300*s,m.width,150*s);mg.fillRect(700*s,0,150*s,m.height);mg.fillRect(1700*s,0,160*s,m.height);mg.fillStyle='#fff';mg.beginPath();mg.arc(p.x*s,p.y*s,4,0,7);mg.fill()}
+function loop(){requestAnimationFrame(loop);if(running)control();draw();minimap();night=(night+.0004)%2;document.getElementById('time').textContent=night>1?'NIGHT 🌙':'DAY ☀️'}loop();
 </script></body></html>
