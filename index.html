@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mountain Road Racing</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=AI8x7P-JY0wBXKExKrEns8HrKBpjxc-kAB4-zJgKk9UGVNKjetyG4FMPGHUOERp5rLxK50dxkDA_Ughwu5gFuwMuLFK0DvzCIqfpFx82l0qC3KgqhVPcDVsvB272VF-vc8zROT9k8tASxGwm5p_kSrUKD_0EB49p11QDhFo0BD3ugRk2OrfJb14-c4DEqOMMgg5E7gOfGpmsAQWMW1g7Chg_AHrQR62ZHOUZ23TgpoD8oDiihthbXSBdwV_4qO6jkaQ90VnFKaxQFb2Idh3OR4_laSzmUR2VWMLGBHIXDzz2N2X0x8RIoOmDnXzXg2qnfn3gyNf9ddGM9P8NyNkhKA" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDY0YTA4MWY4OWJiZTA1OGU2ODg1YjIxNiZmbj1tb3VudGFpbi1yb2FkLXJhY2luZy1nYW1lLmh0bWwmY2Q9YXR0YWNobWVudCZ0cz00OTY5OTgmcD1mcyZjaWQ9MSZzaWc9MWJmYTNlNDljZGFiYjUyNjQ5MTdkZTVhZGVhMTk0ZjQ3ZmJjYTgxZTNiZWVlZTFkY2UyNjFlYzk0YjEyMWQwYSZ2PTA"/><style>
+  *{box-sizing:border-box} body{margin:0;background:#101820;font-family:Arial,sans-serif;overflow:hidden;color:#fff}
+  #game{width:100vw;height:100vh;display:block}
+  #hud{position:fixed;top:18px;left:18px;z-index:5;font-weight:800;font-size:18px;text-shadow:0 2px 5px #000}
+  #hint{position:fixed;top:18px;right:18px;z-index:5;text-align:right;font-size:14px;text-shadow:0 2px 5px #000}
+  #gameover{display:none;position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.72);align-items:center;justify-content:center;text-align:center}
+  #gameover .card{background:#17222c;padding:28px;border-radius:18px;min-width:280px;box-shadow:0 10px 40px #000}
+  button{border:0;border-radius:12px;padding:14px 22px;font-weight:bold;font-size:16px;cursor:pointer}
+  #controls{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:8;display:flex;gap:12px}
+  .ctrl{width:64px;height:58px;background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.3);font-size:25px;touch-action:none}
+  @media(min-width:800px){#controls{opacity:.45}.ctrl{width:72px}}
+</style>
+</head>
+<body>
+<div id="hud">🏁 Score: <span id="score">0</span><br>⚡ Speed: <span id="speed">0</span> km/h</div>
+<div id="hint">🏔️ MOUNTAIN ROAD RACING<br>← → Steer &nbsp; ↑ Accelerate &nbsp; ↓ Brake</div>
+<canvas id="game"></canvas>
+<div id="controls">
+  <button class="ctrl" id="left">←</button>
+  <button class="ctrl" id="up">↑</button>
+  <button class="ctrl" id="down">↓</button>
+  <button class="ctrl" id="right">→</button>
+</div>
+<div id="gameover"><div class="card"><h1>💥 CRASHED!</h1><p>Your Score: <b id="finalScore">0</b></p><button onclick="restart()">PLAY AGAIN 🚗</button></div></div>
+
+<script>
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
+let W,H,keys={},player,traffic,score,speed,roadOffset,alive,last;
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight} addEventListener('resize',resize);resize();
+
+addEventListener('keydown',e=>keys[e.key]=true);
+addEventListener('keyup',e=>keys[e.key]=false);
+[['left','ArrowLeft'],['right','ArrowRight'],['up','ArrowUp'],['down','ArrowDown']].forEach(([id,key])=>{
+ const b=document.getElementById(id);
+ ['pointerdown','pointerenter'].forEach(ev=>b.addEventListener(ev,e=>{e.preventDefault();keys[key]=true}));
+ ['pointerup','pointercancel','pointerleave'].forEach(ev=>b.addEventListener(ev,e=>{e.preventDefault();keys[key]=false}));
+});
+function restart(){
+ player={x:W*.5,y:H*.78,w:42,h:76};traffic=[];score=0;speed=8;roadOffset=0;alive=true;last=performance.now();
+ document.getElementById('gameover').style.display='none';requestAnimationFrame(loop);
+}
+function roadWidth(y){return W*.18+(y/H)*W*.56}
+function roadCenter(y){return W*.5+Math.sin((y+roadOffset)*.006)*W*.09}
+function drawMountain(){
+ let grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#74b9e8');grad.addColorStop(.55,'#d7ecf2');grad.addColorStop(1,'#53713b');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+ ctx.fillStyle='#6f8790';ctx.beginPath();ctx.moveTo(0,H*.42);ctx.lineTo(W*.18,H*.12);ctx.lineTo(W*.34,H*.42);ctx.lineTo(W*.53,H*.08);ctx.lineTo(W*.74,H*.43);ctx.lineTo(W,H*.18);ctx.lineTo(W,H*.55);ctx.lineTo(0,H*.55);ctx.fill();
+ ctx.fillStyle='#496b3e';for(let i=0;i<18;i++){let x=(i/17)*W;let h=70+Math.random()*50;ctx.beginPath();ctx.moveTo(x-40,H*.55);ctx.lineTo(x,H*.55-h);ctx.lineTo(x+40,H*.55);ctx.fill()}
+}
+function drawRoad(){
+ ctx.fillStyle='#31552c';ctx.fillRect(0,H*.5,W,H*.5);
+ for(let y=H*.35;y<H;y+=6){
+   let c=roadCenter(y),rw=roadWidth(y);
+   ctx.fillStyle='#2c2c2c';ctx.fillRect(c-rw/2,y,rw,7);
+   ctx.fillStyle='#eee';ctx.fillRect(c-rw/2-3,y,3,7);ctx.fillRect(c+rw/2,y,3,7);
+ }
+ // dashed center lines
+ for(let y=H*.36;y<H;y+=35){
+   let yy=(y+roadOffset*1.7)%(H*.7)+H*.3,c=roadCenter(yy),rw=roadWidth(yy);
+   ctx.fillStyle='#ffd93d';ctx.fillRect(c-2,yy,4,Math.max(5,yy/H*16));
+ }
+}
+function car(x,y,w,h,color='#e63946'){
+ ctx.save();ctx.translate(x,y);
+ ctx.fillStyle='rgba(0,0,0,.28)';ctx.fillRect(-w*.55,h*.35,w*1.1,10);
+ ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(-w/2,-h/2,w,h,10);ctx.fill();
+ ctx.fillStyle='#a8d8ff';ctx.fillRect(-w*.28,-h*.27,w*.56,h*.24);
+ ctx.fillStyle='#111';ctx.fillRect(-w*.55,-h*.3,7,h*.62);ctx.fillRect(w*.55-7,-h*.3,7,h*.62);
+ ctx.fillStyle='#fff59d';ctx.fillRect(-w*.34,-h*.43,9,6);ctx.fillRect(w*.12,-h*.43,9,6);
+ ctx.restore();
+}
+function spawn(){
+ let y=H*.38, rw=roadWidth(y),c=roadCenter(y);
+ traffic.push({x:c+(Math.random()-.5)*rw*.65,y:y,w:30,h:55,v:2+Math.random()*3,color:['#1976d2','#ff9800','#6a1b9a','#263238'][Math.floor(Math.random()*4)]});
+}
+function update(dt){
+ if(keys.ArrowUp) speed=Math.min(18,speed+.12*dt);
+ else speed=Math.max(5,speed-.025*dt);
+ if(keys.ArrowDown) speed=Math.max(2,speed-.18*dt);
+ let steer=(keys.ArrowLeft?-1:0)+(keys.ArrowRight?1:0);
+ player.x+=steer*(speed*1.2)*dt;
+ let rw=roadWidth(player.y),c=roadCenter(player.y);
+ player.x=Math.max(c-rw*.42,Math.min(c+rw*.42,player.x));
+ roadOffset+=speed*dt*8; score+=Math.floor(speed*dt*.25);
+ if(Math.random()<.012*dt && traffic.length<7)spawn();
+ traffic.forEach(t=>{t.y+=(speed+t.v)*dt*1.8;t.x=roadCenter(t.y)+(t.x-roadCenter(t.y))*0.995});
+ traffic=traffic.filter(t=>t.y<H+100);
+ for(const t of traffic){
+  if(Math.abs(player.x-t.x)<(player.w+t.w)*.42 && Math.abs(player.y-t.y)<(player.h+t.h)*.45){alive=false;document.getElementById('finalScore').textContent=score;document.getElementById('gameover').style.display='flex'}
+ }
+}
+function loop(now){
+ if(!alive)return;let dt=Math.min(2,(now-last)/16.67);last=now;update(dt);
+ drawMountain();drawRoad();traffic.forEach(t=>car(t.x,t.y,t.w,t.h,t.color));car(player.x,player.y,player.w,player.h);
+ document.getElementById('score').textContent=score;document.getElementById('speed').textContent=Math.round(speed*12);
+ requestAnimationFrame(loop);
+}
+restart();
+</script>
+</body></html>
